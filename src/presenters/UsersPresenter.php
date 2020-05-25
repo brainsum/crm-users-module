@@ -160,6 +160,16 @@ class UsersPresenter extends FrontendPresenter
             $this->flashMessage($this->translator->translate('users.frontend.reset_password.success'));
             $this->redirect(':Users:Sign:In');
         };
+        $form['new_password_confirm']->setOption('description',
+        Html::el('div', ['class' => 'description'])
+            ->addHtml($this->translator->translate('users.frontend.request_password.login.text'))
+            ->addHtml(
+                Html::el('a')
+                    ->href($this->link(':Users:Sign:in'))
+                    ->setText($this->translator->translate('users.frontend.request_password.login.link')
+            )
+        )
+    );
         return $form;
     }
 

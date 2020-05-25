@@ -70,7 +70,15 @@ class SignPresenter extends FrontendPresenter
 
         $form->addPassword('password', $this->translator->translate('users.frontend.sign_in.password.label'))
             ->setRequired($this->translator->translate('users.frontend.sign_in.password.required'))
-            ->setAttribute('placeholder', $this->translator->translate('users.frontend.sign_in.password.required'));
+            ->setAttribute('placeholder', $this->translator->translate('users.frontend.sign_in.password.required'))
+            ->setOption('description',
+                Html::el('div', ['class' => 'description'])
+                    ->addHtml(Html::el('a')
+                        ->href($this->link('Users:requestPassword'))
+                        ->setText($this->translator->translate('users.frontend.request_password.title')
+                    )
+                )
+            );
 
         $form->addCheckbox('remember', $this->translator->translate('users.frontend.sign_in.remember'));
 
